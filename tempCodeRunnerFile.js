@@ -1,9 +1,9 @@
-let n = "name";
-let a = "age";
+function makeObj(key, val) {
+    return {
+        [key]: val,
+    }
+}
 
-const user = {
-    [n] : 'Mike',
-    [a] : 30,
-};
+const obj = makeObj("나이", 33);
 
-console.log(user);
+console.log(obj);
