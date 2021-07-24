@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>쇼핑목록</h1>
+    <ul>
+        <li>우유</li>
+        <li>치즈</li>
+        <li>쥬스</li>
+    </ul>
+    <ul id="buy">
+        <li>감자</li>
+        <li>당근</li>
+        <li>양파</li>
+    </ul>
+    <script>
+       const buy = document.getElementById("buy"); // ul 아이디가 buy
+       console.log(buy);
+       const ulList = document.getElementsByTagName("ul")[1]; // 두번째 ul즉 buy
+       console.log(ulList);
+
+        const carrot = document.getElementsByTagName("li")[4];  // 당근
+        console.log(carrot);
+        const carrot2 = document.getElementById("buy").getElementsByTagName('li')[1];
+        console.log(carrot2);
+        // li가 총 몇개일까요?
+        document.write("<p> li가 총몆개: " + document.getElementsByTagName("li").length + "</p>");
+
+        // id가 buy 밑에 있는 li가 총 몇개 일까?
+        document.write("<p> id가 buy 밑에 li 개수: " + document.getElementById('buy').getElementsByTagName('li').length + "</p>");
+    </script>
+</body>
+</html>

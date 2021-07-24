@@ -256,3 +256,109 @@ hasCola("콜라");   // 0
 let arr = ["Mike", "Tom", "Jane"];
 
 arr.forEach((name, index, array) => console.log(name, index, array));
+
+{ // 스케줄 setInterval
+    function showName(name) {
+        console.log(name);
+    }
+    const tId = setInterval(showName, 3000, 'Mike');
+    clearInterval(tId);
+}
+
+{
+    let num = 1;
+    function showTime() {
+        console.log(`안녕하세요. 접속하신지 ${num++}초가 지났습니다.`);
+        if (num > 5) {
+            clearInterval(tId);
+        }
+    }
+   const tId = setInterval(showTime, 1000);
+}
+
+{ // call 메서드는 모든 함수에서 사용가능, this를 특정값으로 지정할수있음
+    const mike = {
+        name: "Mike",
+    };
+    
+    const tom = {
+        name: "Tom",
+    };
+
+    function showThisName() {
+        console.log(this.name);
+    }
+
+    showThisName();  // this 는 window을 가리킴
+    showThisName.call(mike);
+
+    function update(birthYear, occupation) {
+        this.birthYear = birthYear;
+        this.occupation = occupation;
+    };
+
+    update.call(mike, 1999, 'singer');
+    console.log(mike);
+    // apply 함수 매개변수를 처리하는 방법을 제외하면 call과 완전히 같음
+    // call 일반적인 함수와 마찬가지로 매개변수를 직접받지만,
+    // apply 매개변수를 배열로 받습니다
+    // 첫번째 매개변수는 this를 가리킴
+
+    update.apply(tom, [2000, 'teacher']);
+    console.log(tom);
+
+// bind 함수의 this 값을 영구히 바꿀 수 있습니다
+    const updateMike = update.bind(mike);
+    updateMike(1980, 'police');
+    console.log(mike);
+
+
+    const nums = [3, 10, 1, 6, 4];
+    // const minNum = Math.min(...nums); // ... 스프레드 연산자
+    // const maxNum = Math.max(...nums);
+
+    const minNum = Math.min.apply(null, nums);
+    // = Math.min.apply(null, [3, 10, 1, 6, 4])
+
+    const maxNum = Math.max.call(null, ...nums);
+    // = Math.max.call(null, 3, 10, 1, 6, 4)
+
+    console.log(minNum, maxNum);
+}
+
+{
+    const user = {
+        name: "Mike",
+        showName: function () {
+            console.log(`hello, ${this.name}`);
+        },
+    };
+
+    user.showName();
+    let fn = user.showName;
+
+    fn.call(user);
+    fn.apply(user);
+
+    let boundFn = fn.bind(user);
+
+    boundFn();
+}
+
+{ // Generator 함수의 실행을 중간에 멈췄다가 재개할 수 있는 기능
+    // next(), return(), throw()
+    function* fn(){
+        console.log(1);
+        yield 1;
+        console.log(2);
+        yield 2;
+        console.log(3);
+        yield 3;
+        return "finish";
+    }
+    const a = fn();
+    // a.next();
+    for(let num of a) {
+        console.log(num);
+    }
+}
