@@ -21,11 +21,13 @@
     <script>
        const buy = document.getElementById("buy"); // ul 아이디가 buy
        console.log(buy);
+       document.write(`<p>${buy}</p>`);
        const ulList = document.getElementsByTagName("ul")[1]; // 두번째 ul즉 buy
        console.log(ulList);
 
         const carrot = document.getElementsByTagName("li")[4];  // 당근
         console.log(carrot);
+        document.write('<p>'+ carrot + '</p>');
         const carrot2 = document.getElementById("buy").getElementsByTagName('li')[1];
         console.log(carrot2);
         // li가 총 몇개일까요?

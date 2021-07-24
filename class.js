@@ -362,3 +362,53 @@ arr.forEach((name, index, array) => console.log(name, index, array));
         console.log(num);
     }
 }
+
+{
+    function makeObject(name, age) {
+        return {
+            name,
+            age,
+            hobby: "football"
+        };
+    }
+
+    const mike = makeObject('mike', 30);
+    for(let key in mike) {
+        console.log(key, mike[key]);
+    }
+}
+
+{
+    const user = {
+        name : 'Mike',
+        sayHello: function(){
+            console.log(`Hello, I'm ${this.name}`);
+        }
+    }
+    user.sayHello();
+}
+
+{
+    let numbers = [1,2,3,4,5];
+    for(let num of numbers) {
+        console.log(num);
+    }
+    console.log('--------------------------------')
+    numbers.forEach((value)=> console.log(value));
+}
+
+{
+    let days =['mon', 'tue', 'wed'];
+
+    days.push('thu');
+    days.unshift('sun');
+
+    // console.log(days);
+    for(let index = 0; index < days.length; index++) {
+        console.log(days[index]);
+    }
+    console.log('-----');
+    for(let day of days) {
+        console.log(day);
+    }
+}
