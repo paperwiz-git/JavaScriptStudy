@@ -412,3 +412,73 @@ arr.forEach((name, index, array) => console.log(name, index, array));
         console.log(day);
     }
 }
+
+{
+    function User(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sayName = function(){
+            console.log(this.name);
+        }
+    }
+    let user1 = new User('Mike', 30);
+    let user2 = new User('Jane', 22);
+    let user3 = new User('Tom', 17);
+    console.log(user1);
+    user1.sayName();
+
+    // 생성자 함수 : 상품 객체를 생성해보자
+    function Item(title, price) {
+        // this =();
+        this.title = title;
+        this.price = price;
+        this.showPrice = function(){
+            console.log(` 상품 ${this.title} 가격은 ${this.price} 입니다.`);
+        }
+        // return this;
+    }
+    const item1 = new Item('인형', 3000);
+    item1.showPrice();
+}
+
+{
+    const user = {
+        name : 'Tom',
+        age : 30,
+    }
+
+    const obj = Object.assign({gender : 'male'}, user); // 오브젝트 복사
+    console.log(obj);
+    console.log(Object.keys(user));  // 키를 배열 변환
+    console.log(Object.values(user)); // 값을 배열변환
+    console.log(Object.entries(user));  // 키 /값 배열변환
+    const user2arr = Object.entries(user);  
+    console.log(Object.fromEntries(user2arr));  //  배열을 오브젝트로 변환
+}
+{
+    let n = "name";
+    let a = 'age';
+
+    const user = {
+        [n] : 'mike',
+        [a] : 30,
+        [1+5] : 5,
+    }
+
+    console.log(user);
+
+    function makeObj(key, val) {
+        return {
+            [key] : val,
+        }
+    }
+    const obj = makeObj('나이', 33);
+    console.log(obj);
+
+    let arr = [
+        ['mon', '월'],
+        ['tue', '화']
+    ];
+    const result = Object.fromEntries(arr);
+    console.log(result);
+}
